@@ -10,38 +10,36 @@ namespace NovelTheory
 
     public class TimeRange
     {
-        private Func<DateTime, int, int, DateTime> _delta;
-        private int _sign = 1;
+        private Func<DateTime, int, DateTime> _delta;
         private int _count = 1;
 
-        private TimeRange(Func<DateTime, int, int, DateTime> delta, int sign = 1, int count = 1)
+        private TimeRange(Func<DateTime, int, DateTime> delta, int count = 1)
         {
             _delta = delta;
-            _sign = sign;
             _count = count;
-         }
+        }
 
         public DateTime Transform(DateTime date)
         {
-            return _delta(date, _sign, _count);
+            return _delta(date, _count);
         }
         public static TimeRange operator -(TimeRange tr)
         {
-            return new TimeRange(tr._delta, tr._sign * -1, tr._count);
+            return new TimeRange(tr._delta, -tr._count);
         }
 
-        public static TimeRange operator *(TimeRange tr, int count)
+        public static TimeRange operator *(TimeRange tr, int multiplier)
         {
-            return new TimeRange(tr._delta, tr._sign, count);
+            return new TimeRange(tr._delta, tr._count * multiplier);
         }
-        public static TimeRange operator *(int count, TimeRange tr)
+        public static TimeRange operator *(int multiplicand, TimeRange tr)
         {
-            return new TimeRange(tr._delta, tr._sign, count);
+            return new TimeRange(tr._delta, multiplicand * tr._count);
         }
 
-        public static readonly TimeRange OneDay = new TimeRange((dt, sign, count) => dt.AddDays(sign * count));
-        public static readonly TimeRange OneYear = new TimeRange((dt, sign, count) => dt.AddYears(sign * count));
-        public static readonly TimeRange OneMonth = new TimeRange((dt, sign, count) => dt.AddMonths(sign * count));
+        public static readonly TimeRange OneDay = new TimeRange((dt, count) => dt.AddDays(count));
+        public static readonly TimeRange OneYear = new TimeRange((dt, count) => dt.AddYears(count));
+        public static readonly TimeRange OneMonth = new TimeRange((dt, count) => dt.AddMonths(count));
     }
 
     public static class TimeRangeExt

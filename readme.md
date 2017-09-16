@@ -47,5 +47,6 @@ That gives us the basic version of this:
 <script src="https://gist.github.com/jamescurran/24e4e1cfb4207feb406d7b46f593a272.js"> </script>
 (link to gist [here](https://gist.github.com/jamescurran/24e4e1cfb4207feb406d7b46f593a272))
 
-Each object holds a reference to a function which does the actual conversion we want, which is set in it's it's constructor, which is private so the only instances of `TimeRange` are the properties.
+Each object holds a reference to a function which does the actual conversion we want, which is set in it's it's constructor, which is private so the only instances of `TimeRange` are the properties. So, this solves all the problems we had with the `enum`: Using it is just one line, and each one has the needed function.   
+Well, almost all the problems with the enums.  We still have 
 
