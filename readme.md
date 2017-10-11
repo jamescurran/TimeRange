@@ -1,5 +1,15 @@
 ﻿## TimeRange - a TimeSpan alternative.
+### Syntax:
 
+            DateTime endTime = startTime + TimeRange.OneMonth*3;
+		// or
+		ExtendAccount(expirationDate, TimeRange.OneYear * 2);
+	  
+TimeRange can be used in places where a TimeSpan cannot -- places where the range is given as a number of months or years, but not necessarily a number of days.
+
+
+
+### Background:
 Today I wrote a class to build a report.  It has a method to retrieve data over a given range of dates. 
 Sometimes it will one day, other times, three months or a year. I wanted to paramterize that, but that
 wasn't as easy as it seems.  Now, I could give start and end dates, but that seemed a bit shaky.  The function

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A84DB652-9782-4CE1-AAF3-99F50CB69E2A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>TimeRange</RootNamespace>
+    <RootNamespace>NovelTheory</RootNamespace>
     <AssemblyName>TimeRange</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
