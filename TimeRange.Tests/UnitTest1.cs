@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using NovelTheory;
 
 
 namespace NovelTheory.TimeRangeX.Tests

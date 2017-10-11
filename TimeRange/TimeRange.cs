@@ -10,8 +10,8 @@ namespace NovelTheory
 
     public class TimeRange
     {
-        private Func<DateTime, int, DateTime> _delta;
-        private int _count = 1;
+        private readonly Func<DateTime, int, DateTime> _delta;
+        private readonly int _count;
 
         private TimeRange(Func<DateTime, int, DateTime> delta, int count = 1)
         {
@@ -37,6 +37,25 @@ namespace NovelTheory
             return new TimeRange(tr._delta, multiplicand * tr._count);
         }
 
+        public static DateTime operator+(DateTime date, TimeRange range)
+        {
+            return range.Transform(date);
+        }
+
+        public static DateTime operator +(TimeRange range, DateTime date)
+        {
+            return range.Transform(date);
+        }
+
+        public static DateTime operator -(DateTime date, TimeRange range)
+        {
+            return (-range).Transform(date);
+        }
+
+        public static DateTime operator -(TimeRange range, DateTime date)
+        {
+            return (-range).Transform(date);
+        }
         public static readonly TimeRange OneDay = new TimeRange((dt, count) => dt.AddDays(count));
         public static readonly TimeRange OneYear = new TimeRange((dt, count) => dt.AddYears(count));
         public static readonly TimeRange OneMonth = new TimeRange((dt, count) => dt.AddMonths(count));
